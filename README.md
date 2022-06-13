@@ -2,6 +2,10 @@
 
 Simple password validator made with Javascript 💛
 
+## Branch history
+
+- `base-code`: a complex logic to password validator. In next branches, we'll add tests and refactor the code
+
 ## Stack
 
 - node `12.22.12`
