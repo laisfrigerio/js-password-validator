@@ -4,22 +4,15 @@ function hasMinLenght (password) {
     return password.length >= PASSWORD_MINIMUM_LENGHT
 }
 
-function checkNumbers (pwd) {
-    var result = false
-    for (var i = 0; i < pwd.length; i++) {
-        var number = parseInt(pwd.charAt(i))
-        if (!isNaN(number)) {
-            result = true
-        }
-    }
-
-    return result;
+function hasNumbers (password) {
+    const regex = new RegExp(/[0-9]/)
+    return regex.test(password)
 }
 
 function checkCapitalize (pwd) {
     var capitalized = false
     for (var i = 0; i < pwd.length; i++) {
-        if (!checkNumbers(pwd.charAt(i))) {
+        if (!hasNumbers(pwd.charAt(i))) {
             if (!checkSpecialChars(pwd.charAt(i))) {
                 if (pwd.charAt(i) == pwd.charAt(i).toUpperCase()) {
                     capitalized = true
@@ -48,7 +41,7 @@ function checkPwd(pwd) {
     if (!hasMinLenght(pwd)) {
         result = false;
         console.log('password minimum 8 characters')
-    } else if (!checkNumbers(pwd)) {
+    } else if (!hasNumbers(pwd)) {
         result = false
         console.log('password needs numbers')
     } else if(!checkCapitalize(pwd)) {
@@ -62,4 +55,5 @@ function checkPwd(pwd) {
     return result
 }
 
+module.exports.hasNumbers = hasNumbers
 module.exports.hasMinLenght = hasMinLenght
