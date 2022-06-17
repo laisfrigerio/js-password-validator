@@ -9,19 +9,9 @@ function hasNumbers (password) {
     return regex.test(password)
 }
 
-function checkCapitalize (pwd) {
-    var capitalized = false
-    for (var i = 0; i < pwd.length; i++) {
-        if (!hasNumbers(pwd.charAt(i))) {
-            if (!checkSpecialChars(pwd.charAt(i))) {
-                if (pwd.charAt(i) == pwd.charAt(i).toUpperCase()) {
-                    capitalized = true
-                }
-            }
-        }
-    }
-
-    return capitalized;
+function hasCapitalLetter (password) {
+  const regex = new RegExp(/[A-Z]/)
+  return regex.test(password)
 }
 
 function checkSpecialChars (pwd) {
@@ -57,3 +47,4 @@ function checkPwd(pwd) {
 
 module.exports.hasNumbers = hasNumbers
 module.exports.hasMinLenght = hasMinLenght
+module.exports.hasCapitalLetter = hasCapitalLetter
