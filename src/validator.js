@@ -14,15 +14,9 @@ function hasCapitalLetter (password) {
   return regex.test(password)
 }
 
-function checkSpecialChars (pwd) {
-    var spcChars = "'\"!@#$%ˆ&*()_-+=§[]{}\\\`±|/?<>,."
-    var spcCharacter = false
-    for (var i = 0; i < pwd.length; i++){
-        if (spcChars.indexOf(pwd.charAt(i)) != -1) {
-            spcCharacter = true
-        }
-    }
-    return spcCharacter;
+function hasSpecialCharacter (password) {
+  const regex = RegExp(/[*@!#%&()^~{}<>]/)
+  return regex.test(password)
 }
 
 function checkPwd(pwd) {
@@ -45,6 +39,7 @@ function checkPwd(pwd) {
     return result
 }
 
-module.exports.hasNumbers = hasNumbers
-module.exports.hasMinLenght = hasMinLenght
 module.exports.hasCapitalLetter = hasCapitalLetter
+module.exports.hasMinLenght = hasMinLenght
+module.exports.hasNumbers = hasNumbers
+module.exports.hasSpecialCharacter = hasSpecialCharacter
