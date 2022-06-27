@@ -4,7 +4,8 @@
   "description": "Simple password validator made with Javascript 💛",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",

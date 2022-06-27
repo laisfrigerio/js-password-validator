@@ -19,32 +19,45 @@ function hasCapitalLetter (password) {
     return regex.test(password)
 }
 
-function valid(pwd) {
-    if (!hasMinLenght(pwd)) {
-        console.log('password minimum 8 characters')
+function hasLowerCase (password) {
+    const regex = new RegExp(/[a-z]/)
+    return regex.test(password)
+}
+
+function valid(password) {
+    if (!hasMinLenght(password)) {
+        console.log('Password must have at least 8 characters')
         return false
     }
     
-    if (!hasNumbers(pwd)) {
-        console.log('password needs numbers')
+    if (!hasNumbers(password)) {
+        console.log('Password must have at least 1 number')
         return false
     }
     
-    if (!checkCapitalize(pwd)) {
-        console.log('password needs capitalized word')
+    if (!hasCapitalLetter(password)) {
+        console.log('Password must have at least 1 capital letter')
+        return false
+    }
+
+    if (!hasLowerCase(password)) {
+        console.log('Password must have at least one lower case letter')
         return false
     }
     
-    if (!checkSpecialChars(pwd)){
-        console.log('password needs special characters')
+    if (!hasSpecialCharacter(password)){
+        console.log('Password must have at least one special characters')
         return false
     }
 
     return true
 }
 
-module.exports.hasMinLenght = hasMinLenght
-module.exports.hasNumbers = hasNumbers
-module.exports.hasSpecialCharacter = hasSpecialCharacter
-module.exports.hasCapitalLetter = hasCapitalLetter
-module.exports.valid = valid
+module.exports = {
+    hasCapitalLetter,
+    hasLowerCase,
+    hasMinLenght,
+    hasNumbers,
+    hasSpecialCharacter,
+    valid
+}
